@@ -1,41 +1,52 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ListGroup, Card, Container, Button, Accordion } from 'react-bootstrap';
+import axios from 'axios';
+
+type Post = {
+    userId: number,
+    id: number,
+    title: string,
+    body: string
+}
+type Comment = {
+    postId: number,
+    id: number,
+    name: string,
+    email: string,
+    body: string
+}
+type User = {
+    id: number,
+    name: string
+}
 
 const MainPage = () => {
-    const posts = [
-        {
-            id: 1,
-            author: 'Name1',
-            title: 'First Post',
-            content: 'This is the content of the first post.',
-            comments: [
-                {
-                    commentTitle: 'Name3',
-                    commentText: 'Txt, text, text.',
-                },
-                {
-                    commentTitle: 'Name4',
-                    commentText: 'Txt, text, text.',
-                },
-            ]
-        },
-        {
-            id: 2,
-            author: 'Name2',
-            title: 'Second Post',
-            content: 'This is the content of the second post.',
-            comments: [
-                {
-                    commentTitle: 'Name5',
-                    commentText: 'Txt, text, text.',
-                },
-                {
-                    commentTitle: 'Name6',
-                    commentText: 'Txt, text, text.',
-                },
-            ]
-        },
-    ];
+    const [posts, setPosts] = useState<Post[]>([]);
+    const [comments, setComments] = useState<Comment[]>([]);
+    const [users, setUsers] = useState<User[]>([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const postsResponse = await axios.get<Post[]>(
+                'https://jsonplaceholder.typicode.com/posts'
+            );
+            const commentsResponse = await axios.get<Comment[]>(
+                'https://jsonplaceholder.typicode.com/comments'
+            );
+            const usersResponse = await axios.get<User[]>(
+                'https://jsonplaceholder.typicode.com/users'
+            );
+
+            setPosts(postsResponse.data);
+            setComments(commentsResponse.data);
+            setUsers(usersResponse.data);
+        };
+
+        fetchData();
+    }, []);
+
+
+
 
     const [showComments, setShowComments] = useState(false);
 
@@ -51,20 +62,20 @@ const MainPage = () => {
                         <Card.Body className='p-10'>
                             <div className="d-flex align-items-center">
                                 <img src="imgs/woman.png" alt="avatar" />
-                                <Card.Subtitle className="m-2 text-muted">{post.author}</Card.Subtitle>
+                                <Card.Subtitle className="m-2 text-muted">{users.find(u => post.userId === u.id)?.name}</Card.Subtitle>
                             </div>
                             <Card.Title>{post.title}</Card.Title>
-                            <Card.Text>{post.content}</Card.Text>
+                            <Card.Text>{post.body}</Card.Text>
                             <Button variant="light" onClick={toggleComments}>
                                 <img className='pe-2' src="imgs/comment.png" alt="comments" />
                                 Comments
                             </Button>
                             {showComments && (
                                 <ListGroup className="mt-3">
-                                    {post.comments.map((comment) => (
+                                    {comments.filter(c => post.id === c.postId).map((comment) => (
                                         <ListGroup.Item>
-                                            <h5>{comment.commentTitle}</h5>
-                                            <p>{comment.commentText}</p>
+                                            <h5>{comment.email}</h5>
+                                            <p>{comment.body}</p>
                                         </ListGroup.Item>
                                     ))}
 
