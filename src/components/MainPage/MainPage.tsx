@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { ListGroup, Card, Container, Button, Accordion } from 'react-bootstrap';
+import { ListGroup, Card, Container, Button} from 'react-bootstrap';
 import axios from 'axios';
+import Comments from './Comments';
 
 type Post = {
     userId: number,
@@ -8,13 +9,7 @@ type Post = {
     title: string,
     body: string
 }
-type Comment = {
-    postId: number,
-    id: number,
-    name: string,
-    email: string,
-    body: string
-}
+
 type User = {
     id: number,
     name: string
@@ -41,7 +36,6 @@ const MainPage = () => {
             setComments(commentsResponse.data);
             setUsers(usersResponse.data);
         };
-
         fetchData();
     }, []);
 
@@ -66,21 +60,7 @@ const MainPage = () => {
                             </div>
                             <Card.Title>{post.title}</Card.Title>
                             <Card.Text>{post.body}</Card.Text>
-                            <Button variant="light" onClick={toggleComments}>
-                                <img className='pe-2' src="imgs/comment.png" alt="comments" />
-                                Comments
-                            </Button>
-                            {showComments && (
-                                <ListGroup className="mt-3">
-                                    {comments.filter(c => post.id === c.postId).map((comment) => (
-                                        <ListGroup.Item>
-                                            <h5>{comment.email}</h5>
-                                            <p>{comment.body}</p>
-                                        </ListGroup.Item>
-                                    ))}
-
-                                </ListGroup>
-                            )}
+                           <Comments postId={post.id} />
                         </Card.Body>
                     </Card>
                 ))}
