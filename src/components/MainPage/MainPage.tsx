@@ -2,18 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { ListGroup, Card, Container, Button} from 'react-bootstrap';
 import axios from 'axios';
 import Comments from './Comments';
+import { Post } from '../../models/Post';
+import { User } from '../../models/User';
 
-type Post = {
-    userId: number,
-    id: number,
-    title: string,
-    body: string
-}
-
-type User = {
-    id: number,
-    name: string
-}
 
 const MainPage = () => {
     const [posts, setPosts] = useState<Post[]>([]);
