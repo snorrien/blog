@@ -61,7 +61,7 @@ const MainPage = () => {
                     <Card key={post.id} className='rounded-4 bg-white m-2'>
                         <Card.Body className='p-10'>
                             <div className="d-flex align-items-center">
-                                <img src="imgs/woman.png" alt="avatar" />
+                                <a href="/detailspage"><img src="imgs/woman.png" alt="avatar" /></a>
                                 <Card.Subtitle className="m-2 text-muted">{users.find(u => post.userId === u.id)?.name}</Card.Subtitle>
                             </div>
                             <Card.Title>{post.title}</Card.Title>
