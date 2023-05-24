@@ -4,6 +4,7 @@ import axios from 'axios';
 import Comments from './Comments';
 import { Post } from '../../models/Post';
 import { User } from '../../models/User';
+import { Link } from 'react-router-dom';
 
 
 const MainPage = () => {
@@ -32,7 +33,7 @@ const MainPage = () => {
                     <Card key={post.id} className='rounded-4 bg-white m-2'>
                         <Card.Body className='p-10'>
                             <div className="d-flex align-items-center">
-                                <a href="/detailspage"><img src="imgs/woman.png" alt="avatar" /></a>
+                                <Link to="/details" state={{ user: users.find(u => post.userId === u.id), posts: posts.filter(p => p.userId === post.userId) }}><img src="imgs/woman.png" alt="avatar" /></Link>
                                 <Card.Subtitle className="m-2 text-muted">{users.find(u => post.userId === u.id)?.name}</Card.Subtitle>
                             </div>
                             <Card.Title>{post.title}</Card.Title>

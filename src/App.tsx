@@ -31,7 +31,7 @@ function App() {
                 <Routes >
                   <Route path='/' element={<MainPage />} />
                   <Route path='/aboutpage' element={<AboutPage />} />
-                  <Route path='/detailspage' element={<DetailsPage />} />
+                  <Route path="/details" loader={() => { return 1; } } element={<DetailsPage/>} />
                 </Routes>
               </BrowserRouter>
             </Col>
