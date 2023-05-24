@@ -16,10 +16,10 @@ function App() {
   };
 
   return (
-    <div className="bg-secondary" >
-      <div className="pos-f-t">
+    <div className="bg-secondary " >
+      <div className="pos-f-t vh-100" >
         <Navbar toggleMenu={toggleMenu}/>
-        <Container fluid>
+        <Container fluid className="bg-secondary ">
           <Row>
             {showMenu && (
               <Col sm={2} className="bg-light">

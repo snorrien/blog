@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ListGroup, Card, Container, Button} from 'react-bootstrap';
+import { ListGroup, Card, Container} from 'react-bootstrap';
 import axios from 'axios';
 import Comments from './Comments';
 import { Post } from '../../models/Post';
