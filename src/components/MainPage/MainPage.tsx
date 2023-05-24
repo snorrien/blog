@@ -8,7 +8,6 @@ import { User } from '../../models/User';
 
 const MainPage = () => {
     const [posts, setPosts] = useState<Post[]>([]);
-    const [comments, setComments] = useState<Comment[]>([]);
     const [users, setUsers] = useState<User[]>([]);
 
     useEffect(() => {
@@ -16,28 +15,15 @@ const MainPage = () => {
             const postsResponse = await axios.get<Post[]>(
                 'https://jsonplaceholder.typicode.com/posts'
             );
-            const commentsResponse = await axios.get<Comment[]>(
-                'https://jsonplaceholder.typicode.com/comments'
-            );
             const usersResponse = await axios.get<User[]>(
                 'https://jsonplaceholder.typicode.com/users'
             );
 
             setPosts(postsResponse.data);
-            setComments(commentsResponse.data);
             setUsers(usersResponse.data);
         };
         fetchData();
     }, []);
-
-
-
-
-    const [showComments, setShowComments] = useState(false);
-
-    const toggleComments = () => {
-        setShowComments((prevState) => !prevState);
-    };
 
     return (
         <Container className='d-flex justify-content-center'>
