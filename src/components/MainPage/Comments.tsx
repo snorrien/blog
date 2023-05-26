@@ -21,7 +21,6 @@ const Comments = ({ postId }: Props) => {
         if (!showComments) {
             dispatch(getComments(postId));
         }
-
         setShowComments((prevState) => !prevState);
     };
 
