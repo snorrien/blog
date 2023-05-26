@@ -1,40 +1,23 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
 import { ListGroup, Button } from 'react-bootstrap';
 import { Comment } from '../../models/Comment';
-import { increment } from '../../store/counterSlice';
+import { getComments } from '../../redux/actions/actionCreator';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../store/store';
+import { RootState } from '../../redux/store/store';
+import { useEffect, useState } from 'react';
 
 type Props = {
     postId: number;
 };
 
 const Comments = ({ postId }: Props) => {
-    const [comments, setComments] = useState<Comment[]>([]);
-
-    useEffect(() => {
-        const fetchData = async () => {
-
-            const commentsResponse = await axios.get<Comment[]>(
-                'https://jsonplaceholder.typicode.com/comments'
-            );
-            setComments(commentsResponse.data);
-        };
-        fetchData();
-    }, []);
-
     const [showComments, setShowComments] = useState(false);
 
-    const counter: number = useSelector(
-        (state: RootState) => state.counter.value
+    const comments: Comment[] = useSelector(
+        (state: RootState) => state.comments.comments
     );
-    const dispatch = useDispatch();
-
+    
     const toggleComments = () => {
         setShowComments((prevState) => !prevState);
-        dispatch(increment());
-        console.log(counter);
     };
 
     return (

@@ -5,6 +5,8 @@ import Comments from './Comments';
 import { Post } from '../../models/Post';
 import { User } from '../../models/User';
 import { Link } from 'react-router-dom';
+import { getComments } from '../../redux/actions/actionCreator';
+import { useDispatch } from 'react-redux';
 
 
 const MainPage = () => {
@@ -24,6 +26,12 @@ const MainPage = () => {
             setUsers(usersResponse.data);
         };
         fetchData();
+    }, []);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getComments());
     }, []);
 
     return (
