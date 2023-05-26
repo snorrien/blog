@@ -1,6 +1,7 @@
 import { useEffect} from 'react';
 import { ListGroup, Card, Container} from 'react-bootstrap';
-import Comments from './Comments';
+import Comments from '../Comments/Comments';
+import CardBox from '../UserPosts/UserPosts';
 import { Post } from '../../models/Post';
 import { User } from '../../models/User';
 import { Link } from 'react-router-dom';
@@ -9,13 +10,16 @@ import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store/store';
 
 const MainPage = () => {
-
     const posts: Post[] = useSelector(
         (state: RootState) => state.posts.posts
     );
 
     const users: User[] = useSelector(
         (state: RootState) => state.users.users
+    );
+
+    const loading: boolean = useSelector(
+        (state: RootState) => state.posts.loading
     );
 
     const dispatch = useDispatch();
@@ -48,6 +52,7 @@ const MainPage = () => {
                     </Card>
                 ))}
             </ListGroup>
+
         </Container>
     )
 }

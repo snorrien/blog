@@ -6,6 +6,9 @@ export async function getPosts(){
     const response = await axios.get<Post[]>(
         'https://jsonplaceholder.typicode.com/posts'
     );
+
+    await delay(1000);
+
     return response.data;
 }
 
@@ -22,3 +25,7 @@ export async function getUsers(){
     );
     return response.data;
 }
+
+function delay(ms: number): Promise<void> {
+    return new Promise((resolve) => setTimeout(resolve, ms));
+  }
