@@ -36,7 +36,7 @@ const MainPage = () => {
 
     return (
         <Container className='d-flex justify-content-center'>
-            <ListGroup className='d-flex w-100'>
+            <ListGroup className='d-flex w-100  '>
                 {posts.map((post) => (
                     <Card key={post.id} className='rounded-4 bg-white m-2'>
                         <Card.Body className='p-10'>

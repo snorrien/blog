@@ -3,7 +3,7 @@ import { Container, Card } from 'react-bootstrap';
 const AboutPage = () => {
     return (
         <Container className='d-flex justify-content-center '>
-            <Card className='rounded-4 bg-white m-2'>
+            <Card className='rounded-4 m-2'>
                 <Card.Body className="card p-10 py-4">
                     <div className="text-center">
                         <img src="imgs/woman-big.png" alt="avatar" />
