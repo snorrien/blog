@@ -1,28 +1,27 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ListGroup, Card, Container} from 'react-bootstrap';
 import axios from 'axios';
 import Comments from './Comments';
 import { Post } from '../../models/Post';
 import { User } from '../../models/User';
 import { Link } from 'react-router-dom';
-import { getComments } from '../../redux/actions/actionCreator';
-import { useDispatch } from 'react-redux';
+import { getComments, getPosts } from '../../redux/actions/actionCreator';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/store/store';
 
 
 const MainPage = () => {
-    const [posts, setPosts] = useState<Post[]>([]);
     const [users, setUsers] = useState<User[]>([]);
+
+    const posts: Post[] = useSelector(
+        (state: RootState) => state.posts.posts
+    );
 
     useEffect(() => {
         const fetchData = async () => {
-            const postsResponse = await axios.get<Post[]>(
-                'https://jsonplaceholder.typicode.com/posts'
-            );
             const usersResponse = await axios.get<User[]>(
                 'https://jsonplaceholder.typicode.com/users'
             );
-
-            setPosts(postsResponse.data);
             setUsers(usersResponse.data);
         };
         fetchData();
@@ -31,7 +30,8 @@ const MainPage = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getComments());
+        
+        dispatch(getPosts());
     }, []);
 
     return (

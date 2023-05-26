@@ -1,6 +1,12 @@
-import { GET_COMMENTS, GET_POSTS, SET_COMMENTS } from "../constants";
+import { Post } from "../../models/Post";
+import { SET_POSTS, SET_COMMENTS, GET_COMMENTS, GET_POSTS } from "../constants";
 
-export const addPosts = () => ({
+export const setPosts = (payload: Post[]) => ({
+    type: SET_POSTS,
+    posts: payload
+});
+
+export const getPosts = () => ({
     type: GET_POSTS,
 });
 
@@ -9,6 +15,7 @@ export const setComments = (payload: Comment[]) => ({
     comments: payload
 });
 
-export const getComments = () => ({
-    type: GET_COMMENTS
+export const getComments = (postId: number) => ({
+    type: GET_COMMENTS,
+    postId: postId
 });
