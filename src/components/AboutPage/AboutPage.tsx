@@ -18,7 +18,7 @@ const AboutPage = () => {
                             Алена Шаповалова
                         </Card.Title>
                         <Card.Subtitle className="m-2 text-muted">
-                            Frontend-developer
+                            Junior Frontend developer 
                         </Card.Subtitle>
                     </Container>
                     <Container>
