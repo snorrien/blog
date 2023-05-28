@@ -3,7 +3,7 @@ import "./AboutPage.css";
 
 const AboutPage = () => {
     return (
-        <Container d-flex justify-content-center>
+        <Container className="d-flex justify-content-center">
             <Card className="rounded-4 m-2 d-flex w-100 justify-content-center">
                 <Card.Header>
                     <Card.Subtitle className="m-2 text-muted">
