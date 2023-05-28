@@ -10,7 +10,7 @@ const AboutPage = () => {
                         Пользователь подтвержден
                     </Card.Subtitle>
                 </Card.Header>
-                <Card.Img className="banner" variant="top" src="../../../imgs/Banner.png" />
+                <Card.Img className="banner" variant="top" src="imgs/Banner.png" />
                 <Card.Body className="p-10">
                     <Container className="d-flex-column text-center">
                         <Image className="user-avatar" src="imgs/woman-big.png" alt="avatar" />

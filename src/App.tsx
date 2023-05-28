@@ -15,7 +15,7 @@ function App() {
         <Navbar />
         <Routes >
           <Route path='/' element={<MainPage />} />
-          <Route path='/aboutpage' element={<AboutPage />} />
+          <Route path='/about' element={<AboutPage />} />
           <Route path="/details" loader={() => { return 1; }} element={<DetailsPage />} />
         </Routes>
       </BrowserRouter>
