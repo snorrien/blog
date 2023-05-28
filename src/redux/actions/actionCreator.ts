@@ -1,6 +1,6 @@
 import { Post } from "../../models/Post";
 import { User } from "../../models/User";
-import { SET_POSTS, SET_COMMENTS, GET_COMMENTS, GET_POSTS_REQUEST, SET_USERS, GET_USERS, GET_POSTS_LOADED, SET_USERPOSTS, GET_USERPOSTS_REQUEST, GET_USERPOSTS_LOADED } from "../constants";
+import { SET_POSTS, SET_COMMENTS, GET_POSTS_REQUEST, SET_USERS, GET_USERS, GET_POSTS_LOADED, SET_USERPOSTS, GET_USERPOSTS_REQUEST, GET_USERPOSTS_LOADED, GET_COMMENTS_LOADED, GET_COMMENTS_REQUEST } from "../constants";
 
 export const setPosts = (payload: Post[]) => ({
     type: SET_POSTS,
@@ -21,8 +21,12 @@ export const setComments = (payload: Comment[]) => ({
 });
 
 export const getComments = (postId: number) => ({
-    type: GET_COMMENTS,
+    type: GET_COMMENTS_REQUEST,
     postId: postId
+});
+
+export const commentsLoaded = () => ({
+    type: GET_COMMENTS_LOADED,
 });
 
 export const setUsers = (payload: User[]) => ({

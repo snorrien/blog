@@ -10,8 +10,8 @@ function App() {
 
   return (
     <div className="app-container">
-      <Navbar />
       <BrowserRouter>
+        <Navbar />
         <Routes >
           <Route path='/' element={<MainPage />} />
           <Route path='/aboutpage' element={<AboutPage />} />

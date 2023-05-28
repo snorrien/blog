@@ -1,4 +1,4 @@
-import { ListGroup, Card } from 'react-bootstrap';
+import { ListGroup, Card, Container, Image } from 'react-bootstrap';
 import Comments from "../Comments/Comments"
 import { Post } from '../../models/Post';
 import { User } from '../../models/User';
@@ -14,10 +14,10 @@ const UserPosts = ({ user, posts }: Props) => {
             {posts.map((post) => (
                 <Card key={post.id} className='rounded-4 bg-white m-2'>
                     <Card.Body className='p-10'>
-                        <div className="d-flex align-items-center">
-                            <img src="imgs/woman.png" alt="avatar" />
+                        <Container className="d-flex align-items-center">
+                            <Image src="imgs/woman.png" alt="avatar" />
                             <Card.Subtitle className="m-2 text-muted">{user.name}</Card.Subtitle>
-                        </div>
+                        </Container>
                         <Card.Title>{post.title}</Card.Title>
                         <Card.Text>{post.body}</Card.Text>
                         <Comments postId={post.id} />

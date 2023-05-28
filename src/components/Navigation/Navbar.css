@@ -1,6 +1,5 @@
-.nav-pills li a:hover {
-    background-color: rgb(66, 66, 252);
+.custom-nav-item a:hover {
+    background-color: #FFE082;
     color: white;
-
 }
 

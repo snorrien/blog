@@ -1,9 +1,10 @@
-import { ListGroup, Button } from 'react-bootstrap';
+import { ListGroup, Button, Image, Container } from 'react-bootstrap';
 import { Comment } from '../../models/Comment';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store/store';
 import { useState } from 'react';
 import { getComments } from '../../redux/actions/actionCreator';
+import Loader from '../Loader/Loader';
 
 type Props = {
     postId: number;
@@ -24,14 +25,18 @@ const Comments = ({ postId }: Props) => {
         setShowComments((prevState) => !prevState);
     };
 
+    const loading: boolean = useSelector(
+        (state: RootState) => state.comments.loading
+    );
+
     return (
-        <div>
+        <Container>
             <Button variant="light" onClick={toggleComments}>
-                <img className='pe-2' src="imgs/comment.png" alt="comments" />
-                Comments
+                <Image className='pe-2' src="imgs/comment.png" alt="comments" />
+                Коментарии
             </Button>
             {
-                showComments && (
+                showComments && !loading && (
                     <ListGroup className="mt-3">
                         {comments.filter(c => postId === c.postId).map((comment) => (
                             <ListGroup.Item key={comment.id}>
@@ -42,7 +47,8 @@ const Comments = ({ postId }: Props) => {
                     </ListGroup>
                 )
             }
-        </div>
+            {loading && (<Loader />)}
+        </Container>
     )
 }
 export default Comments;

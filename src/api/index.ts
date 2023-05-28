@@ -15,7 +15,6 @@ export async function getUserPosts(userId: number){
         `https://jsonplaceholder.typicode.com/posts?userId=${userId}`
     );
     await delay(500);
-    console.log('userPosts loaded from api')
     return response.data;
 }
 
@@ -23,6 +22,7 @@ export async function getComments(postId: number){
     const response = await axios.get<Comment[]>(
         `https://jsonplaceholder.typicode.com/comments?postId=${postId}`
     );
+    await delay(500);
     return response.data;
 }
 

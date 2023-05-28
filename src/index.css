@@ -11,13 +11,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-:root {
-  --my-color: #ff0000;
-  --primary: var(--my-color);
-  /* Изменение основного цвета */
-  --primary-hover: darken(var(--my-color), 10%);
-  /* Изменение цвета при наведении */
-  --primary-focus: darken(var(--my-color), 20%);
-  /* Изменение цвета при активации */
-}
