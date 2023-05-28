@@ -4,6 +4,7 @@ import rootSaga from "../saga";
 import commentsReducer from "../reducers/commentsReducer";
 import postsReducer from "../reducers/postsReducer";
 import usersReducer from "../reducers/usersReducer";
+import userPostsReducer from "../reducers/userPostsReducer";
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -11,7 +12,8 @@ export const store = configureStore({
   reducer: {
     comments: commentsReducer,
     posts: postsReducer,
-    users: usersReducer
+    users: usersReducer,
+    userPosts: userPostsReducer
   },
   middleware: getDefaultMiddleware => getDefaultMiddleware().concat(sagaMiddleware),
 })

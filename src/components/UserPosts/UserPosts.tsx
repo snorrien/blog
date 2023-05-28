@@ -1,24 +1,17 @@
 import { ListGroup, Card } from 'react-bootstrap';
 import Comments from "../Comments/Comments"
-import { useSelector } from 'react-redux';
 import { Post } from '../../models/Post';
-import { RootState } from '../../redux/store/store';
 import { User } from '../../models/User';
 
 type Props = {
     user: User;
-    
+    posts: Post[];
 };
 
-const UserPosts = ({ user }: Props) => {
-
-    const posts: Post[] = useSelector(
-        (state: RootState) => state.posts.posts
-    );
-
+const UserPosts = ({ user, posts }: Props) => {
     return (
         <ListGroup className='d-flex w-100'>
-            {posts.filter(p => p.userId === user.id).map((post) => (
+            {posts.map((post) => (
                 <Card key={post.id} className='rounded-4 bg-white m-2'>
                     <Card.Body className='p-10'>
                         <div className="d-flex align-items-center">

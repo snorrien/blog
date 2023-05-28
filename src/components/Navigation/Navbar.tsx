@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Offcanvas } from 'react-bootstrap';
+import { Offcanvas, Button, Nav, Container } from 'react-bootstrap';
 import "./Navbar.css"
 
 const Navbar = () => {
@@ -9,20 +9,20 @@ const Navbar = () => {
 
   return (
     <div className="bg-secondary">
-      <nav className="navbar navbar-dark bg-dark">
-        <button className="navbar-toggler ms-2"
+      <Nav className="navbar navbar-dark bg-dark">
+        <Button className="navbar-toggler ms-2"
           type="button"
           onClick={handleShow}>
           <span className="navbar-toggler-icon" ></span>
-        </button>
-      </nav>
+        </Button>
+      </Nav>
       <Offcanvas show={show} onHide={handleClose}>
         <Offcanvas.Body>
-          <div className="d-flex flex-column align-items-center pt-3">
+          <Container className="d-flex flex-column align-items-center pt-3">
             <img src="imgs/woman-big.png" alt="avatar" />
             <h6>Алена Шаповалова</h6>
             <h6>avshapovalova31@gmail.com</h6>
-          </div>
+          </Container>
           <div className="nav flex-column pt-2">
             <ul className="nav nav-pills flex-column mt-4" >
               <li className="nav-item">

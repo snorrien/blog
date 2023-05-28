@@ -6,9 +6,16 @@ export async function getPosts(){
     const response = await axios.get<Post[]>(
         'https://jsonplaceholder.typicode.com/posts'
     );
+    await delay(500);
+    return response.data;
+}
 
-    await delay(1000);
-
+export async function getUserPosts(userId: number){
+    const response = await axios.get<Post[]>(
+        `https://jsonplaceholder.typicode.com/posts?userId=${userId}`
+    );
+    await delay(500);
+    console.log('userPosts loaded from api')
     return response.data;
 }
 

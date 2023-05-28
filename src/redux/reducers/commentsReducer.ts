@@ -1,3 +1,5 @@
+import { SET_COMMENTS } from "../constants";
+
 interface CommentsState {
     comments: Comment[]
 }
@@ -8,7 +10,7 @@ const initialState: CommentsState = {
 
 const commentsReducer = (state: CommentsState = initialState, action: any) => {
     switch (action.type) {
-        case 'SET_COMMENTS':
+        case SET_COMMENTS:
             return { ...state, comments: action.comments }
         default:
             return state;

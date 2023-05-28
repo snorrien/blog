@@ -1,5 +1,5 @@
 import { Post } from "../../models/Post";
-import { GET_POSTS_LOADED, GET_POSTS_REQUEST, SET_POSTS } from "../constants";
+import { GET_USERPOSTS_LOADED, GET_USERPOSTS_REQUEST, SET_USERPOSTS } from "../constants";
 
 interface PostsState {
     posts: Post[],
@@ -11,16 +11,16 @@ const initialState: PostsState = {
     loading: false
 }
 
-const postsReducer = (state: PostsState = initialState, action: any) => {
+const userPostsReducer = (state: PostsState = initialState, action: any) => {
     switch (action.type) {
-        case SET_POSTS:
+        case SET_USERPOSTS:
             return { ...state, posts: action.posts }
-        case GET_POSTS_REQUEST:
+        case GET_USERPOSTS_REQUEST:
             return { ...state, loading: true }
-        case GET_POSTS_LOADED:
+        case GET_USERPOSTS_LOADED:
             return { ...state, loading: false }
         default:
             return state;
     }
 };
-export default postsReducer;
+export default userPostsReducer;
