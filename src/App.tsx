@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Container} from 'react-bootstrap';
 import MainPage from './components/MainPage/MainPage';
 import Navbar from './components/Navigation/Navbar';
 import AboutPage from './components/AboutPage/AboutPage';
@@ -9,7 +10,7 @@ import "./App.css";
 function App() {
 
   return (
-    <div className="app-container">
+    <Container fluid className="app-container p-0">
       <BrowserRouter>
         <Navbar />
         <Routes >
@@ -18,7 +19,7 @@ function App() {
           <Route path="/details" loader={() => { return 1; }} element={<DetailsPage />} />
         </Routes>
       </BrowserRouter>
-    </div>
+    </Container>
   );
 }
 
