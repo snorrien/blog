@@ -16,7 +16,7 @@ function App() {
         <Routes >
           <Route path='/' element={<MainPage />} />
           <Route path='/about' element={<AboutPage />} />
-          <Route path="/details" loader={() => { return 1; }} element={<DetailsPage />} />
+          <Route path='/details' element={<DetailsPage />} />
         </Routes>
       </BrowserRouter>
     </Container>
