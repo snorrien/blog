@@ -15,7 +15,7 @@ Here is a little about me
 
 # Features
 1. The logic of working with the server is implemented using saga effects.
-2. The entire interface is implemented using the React-bootstrap ui-library.
+2. The entire interface is implemented using the React-bootstrap.
 
 Stack & Technologies: React, React-bootstrap, React-router, Axios, Redux, Redux-saga, Git.
 
